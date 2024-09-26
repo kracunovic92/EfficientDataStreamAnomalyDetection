@@ -26,7 +26,10 @@ class RealTimeDetector:
         Adjust the threshold based on recent scores in a controlled manner.
         """
         if len(self.z_scores) >= self.window_size:
-            max_score = max(np.max(self.z_scores), self.min_threshold)
+            mean = np.mean(self.z_scores)
+            std = np.std(self.z_scores)
+            new_z = mean + std
+            max_score = max(new_z, self.min_threshold)
             adjustment = (max_score - self.dynamic_threshold) * self.threshold_rate
             self.dynamic_threshold += adjustment
 
