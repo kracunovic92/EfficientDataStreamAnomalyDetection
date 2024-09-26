@@ -1,4 +1,4 @@
-# Explenation
+# Explanation
 
 ## Algorithm Selection
 
